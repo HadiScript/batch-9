@@ -1,0 +1,40 @@
+* {
+  margin: 0px;
+}
+
+.main-purple {
+  background-color: purple;
+  color: white;
+  min-height: 100vh;
+}
+
+.main-dark {
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+}
+
+.main-blue {
+  background-color: blue;
+  color: white;
+  min-height: 100vh;
+}
+
+.container {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border-radius: 10px; */
+}
+
+.container .list {
+  display: flex;
+  gap: 15px;
+}
+
+.container .list span {
+  cursor: pointer;
+}
