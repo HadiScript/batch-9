@@ -24,7 +24,7 @@ const App = () => {
           Inc={Inc}
         />
 
-        <Layout theme={theme}/>
+        <Layout theme={theme} />
 
       </div>
 

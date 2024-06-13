@@ -8,13 +8,22 @@ import MyList from "./MyList";
 
 const Layout = ({ theme }) => {
 
+  const [item2, setItem2] = useState("");
   const [item, setItem] = useState("");
   const [MyData, setMyData] = useState([]);
 
+
+  // input change
   const changeHandler = (e) => {
-    setItem(e.target.value)
+    if (item2 === '') {
+      setItem(e.target.value)
+    } else {
+      setItem2(e.target.value)
+    }
   }
 
+
+  // add items
   const addItem = (e) => {
     e.preventDefault()
 
@@ -31,30 +40,46 @@ const Layout = ({ theme }) => {
     }
   }
 
+
+  // delete item
   const deleteAnItem = (Id) => {
     setMyData(MyData.filter(x => x.id !== Id))
+  }
+
+
+  const updateItem = (ID) => {
+    const selectAnObjectFromArr = MyData?.find(x => x.id === ID)
+    setItem2(selectAnObjectFromArr.name)
   }
 
 
   return (
     <div className='row '>
 
-      <div className="col-12   p-1">
+
+      {/* input */}
+      <div className="col-12 p-1">
         <div className='border rounded-1 p-2'>
           <Heading title={"Add Item"} icon={<LuFormInput className="primaryText" />} />
-          <Inputs
+          {item2 === "" ? <Inputs
             item={item}
             changeHandler={changeHandler}
             addItem={addItem}
-
-          />
-
+          /> :
+            <Inputs
+              item={item2}
+              changeHandler={changeHandler}
+              addItem={addItem}
+            />
+          }
         </div>
       </div>
+
+      {/* listing */}
       <div className="col-12 p-1">
         <div className='border rounded-1 p-2'>
           <Heading title={"My List"} icon={<FaAngellist className="primaryText" />} />
-          <MyList list={MyData} deleteAnItem={deleteAnItem} theme={theme} />
+          <MyList updateItem={updateItem} list={MyData} deleteAnItem={deleteAnItem} theme={theme} />
         </div>
       </div>
     </div>
